@@ -1,0 +1,4 @@
+headers = /Users/viveksingh/CLionProjects/Joke/src/main/c_interop/randomJoke/RandomJoke.h
+compilerOpts = -D_POSIX_SOURCE
+linkerOpts.osx = -L/opt/local/lib -L/usr/local/opt/curl/lib -lcurl
+linkerOpts.linux = -L/usr/lib/x86_64-linux-gnu -lcurl

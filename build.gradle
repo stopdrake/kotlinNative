@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:0.9.2"
+    }
+}
+
+apply plugin: 'konan'
+
+konan.targets = ['macbook']
+
+konanArtifacts {
+library("song") {
+    srcDir 'src/main/libs/songs'
+}
+interop('joke') {
+    defFile 'src/main/c_interop/randomJoke/RandomJoke.def'
+}
+    
+    program('hello') {
+
+	srcDir 'src/main/kotlin/'
+	libraries {
+            artifact 'song'
+            // Use joke as a library
+            artifact 'joke'      }
+}
+}
